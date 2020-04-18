@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.kougianos.blood", appContext.getPackageName());
+        assertEquals("com.kougianos.bloodbank", appContext.getPackageName());
     }
 }

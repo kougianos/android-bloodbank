@@ -1,2 +1,2 @@
-rootProject.name='Blood'
+rootProject.name='BloodBank'
 include ':app'
