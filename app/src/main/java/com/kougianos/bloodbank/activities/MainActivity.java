@@ -1,8 +1,10 @@
-package com.kougianos.blood;
+package com.kougianos.bloodbank.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.kougianos.bloodbank.R;
 
 public class MainActivity extends AppCompatActivity {
 

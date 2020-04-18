@@ -1,4 +1,4 @@
-package com.kougianos.blood;
+package com.kougianos.bloodbank;
 
 import org.junit.Test;
 
