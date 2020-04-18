@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BloodBank</string>
+    <string name="main_activity">Main Activity</string>
 </resources>
