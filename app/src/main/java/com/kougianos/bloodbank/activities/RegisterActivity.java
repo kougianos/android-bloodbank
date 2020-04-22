@@ -48,18 +48,22 @@ public class RegisterActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name, city, blood_group, password, mobile;
+                String name, city, bloodgroup, password, mobile;
                 name = nameEt.getText().toString();
                 city = cityEt.getText().toString();
-                blood_group = bloodgroupEt.getText().toString();
+                bloodgroup = bloodgroupEt.getText().toString();
                 password = passwordEt.getText().toString();
                 mobile = mobileEt.getText().toString();
 
                 // Hide keyboard
-                InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                try {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                } catch (NullPointerException e) {
+                    // Do nothing
+                }
 
-                showMessage(name+"\n"+city+"\n"+blood_group+"\n"+password+"\n"+mobile);
+                showMessage(name+"\n"+city+"\n"+bloodgroup+"\n"+password+"\n"+mobile);
             }
         });
 
