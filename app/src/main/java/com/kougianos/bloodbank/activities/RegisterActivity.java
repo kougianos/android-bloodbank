@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -19,9 +20,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.kougianos.bloodbank.R;
-import com.kougianos.bloodbank.Utils.Endpoints;
-import com.kougianos.bloodbank.Utils.VolleySingleton;
-import com.kougianos.bloodbank.models.BloodGroup;
+import com.kougianos.bloodbank.utils.Endpoints;
+import com.kougianos.bloodbank.utils.VolleySingleton;
+import com.kougianos.bloodbank.utils.BloodGroup;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,9 +31,8 @@ import java.util.Objects;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText nameEt, cityEt, mobileEt, bloodgroupEt, passwordEt;
-    private Button submitButton;
     private ScrollView scrollView;
-    private BloodGroup bloodGroup = new BloodGroup();
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,8 @@ public class RegisterActivity extends AppCompatActivity {
         passwordEt = findViewById(R.id.password);
         bloodgroupEt = findViewById(R.id.blood_group);
         mobileEt = findViewById(R.id.mobile);
-        submitButton = findViewById(R.id.submit_button);
+        progressBar = findViewById(R.id.progressBar_cyclic);
+        Button submitButton = findViewById(R.id.submit_button);
 
         passwordEt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -66,7 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String name, city, bloodgroup, password, mobile;
                 name = nameEt.getText().toString();
                 city = cityEt.getText().toString();
-                bloodgroup = bloodgroupEt.getText().toString();
+                bloodgroup = bloodgroupEt.getText().toString().toUpperCase();
                 password = passwordEt.getText().toString();
                 mobile = mobileEt.getText().toString();
 
@@ -79,7 +80,9 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
                 if (isValid(name, city, bloodgroup, password, mobile)) {
+                    progressBar.setVisibility(View.VISIBLE);
                     register(name, city, bloodgroup, password, mobile);
+
                 }
 
             }
@@ -90,19 +93,19 @@ public class RegisterActivity extends AppCompatActivity {
     private void register(final String name, final String city, final String blood_group, final String password, final String mobile) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Endpoints.registerUrl,
                 new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
+                    @Override
+                    public void onResponse(String response) {
 
-                if(response.equals("Success")) {
-                    Toast.makeText(RegisterActivity.this, response, Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-                    RegisterActivity.this.finish();
-                } else {
-                    Toast.makeText(RegisterActivity.this, response, Toast.LENGTH_SHORT).show();
-                }
+                        if (response.equals("Success")) {
+                            Toast.makeText(RegisterActivity.this, response, Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                            RegisterActivity.this.finish();
+                        } else {
+                            Toast.makeText(RegisterActivity.this, response, Toast.LENGTH_SHORT).show();
+                        }
 
-            }
-        }, new Response.ErrorListener() {
+                    }
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
@@ -135,11 +138,14 @@ public class RegisterActivity extends AppCompatActivity {
         } else if (city.isEmpty()) {
             showMessage("City is empty");
             return false;
-        } else if (!bloodGroup.getBloodGroup().contains(blood_group)) {
-            showMessage("Invalid blood group, should be one of the following:" + bloodGroup.getBloodGroup().toString());
+        } else if (!BloodGroup.getBloodGroups().contains(blood_group)) {
+            showMessage("Invalid blood group, should be one of the following:" + BloodGroup.getBloodGroups().toString());
             return false;
         } else if (mobile.length() != 10) {
             showMessage("Mobile number should be 10 digits");
+            return false;
+        } else if (password.isEmpty()) {
+            showMessage("Password is empty");
             return false;
         }
 
@@ -149,4 +155,5 @@ public class RegisterActivity extends AppCompatActivity {
     private void showMessage(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
+
 }

@@ -1,4 +1,4 @@
-package com.kougianos.bloodbank.Utils;
+package com.kougianos.bloodbank.utils;
 
 import android.content.Context;
 import com.android.volley.Request;
