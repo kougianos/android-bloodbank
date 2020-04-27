@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,10 +27,11 @@ import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText mobileEt;
-    EditText passwordEt;
-    Button submitButton;
-    TextView signUp;
+    private EditText mobileEt;
+    private EditText passwordEt;
+    private Button submitButton;
+    private TextView signUp;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordEt = findViewById(R.id.password);
         submitButton = findViewById(R.id.submit_button);
         signUp = findViewById(R.id.sign_up);
+        progressBar = findViewById(R.id.progressBar_cyclic);
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                 String password = passwordEt.getText().toString();
 
                 if (isValid(mobile, password)) {
+                    progressBar.setVisibility(View.VISIBLE);
                     login(mobile, password);
                 }
 
@@ -77,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                             LoginActivity.this.finish();
                         } else {
                             Toast.makeText(LoginActivity.this, response, Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
                         }
 
                     }
@@ -107,10 +112,12 @@ public class LoginActivity extends AppCompatActivity {
         if (number.isEmpty()) {
             showMessage("Empty Mobile Number");
             mobileEt.setError("Empty Mobile Number");
+            mobileEt.requestFocus();
             return false;
         } else if (password.isEmpty()) {
             showMessage("Empty Password");
             passwordEt.setError("Empty Password");
+            passwordEt.requestFocus();
             return false;
         }
 

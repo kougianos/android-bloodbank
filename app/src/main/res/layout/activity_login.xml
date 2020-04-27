@@ -6,81 +6,96 @@
         android:layout_height="match_parent"
         tools:context=".activities.LoginActivity">
 
-    <LinearLayout
+    <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-        <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="20dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/logo" />
-
-        <com.google.android.material.textfield.TextInputLayout
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp">
+                android:orientation="vertical">
 
-            <EditText
-                    android:id="@+id/mobile"
+            <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="20dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/logo" />
+
+            <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Mobile number"
-                    android:textColor="@android:color/black"
-                    android:textSize="16dp" />
-        </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                app:passwordToggleEnabled="true">
+                <EditText
+                        android:id="@+id/mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Mobile number"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                    android:id="@+id/password"
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/password_wrap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password"
-                    android:inputType="textPassword"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    app:passwordToggleEnabled="true">
+
+                <EditText
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                    android:id="@+id/submit_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30dp"
+                    android:background="@drawable/button_bg"
+                    android:text="Login"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="18dp" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Or"
+                    android:textAlignment="center"
                     android:textColor="@android:color/black"
-                    android:textSize="16dp" />
-        </com.google.android.material.textfield.TextInputLayout>
+                    android:textSize="14sp" />
 
-        <Button
-                android:id="@+id/submit_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:background="@drawable/button_bg"
-                android:text="Login"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textSize="18dp" />
+            <TextView
+                    android:id="@+id/sign_up"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/sign_up"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
 
-        <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Or"
-                android:textAlignment="center"
-                android:textColor="@android:color/black"
-                android:textSize="14sp" />
+        </LinearLayout>
 
-        <TextView
-                android:id="@+id/sign_up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/sign_up"
-                android:textAlignment="center"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
+        <ProgressBar
+                android:id="@+id/progressBar_cyclic"
+                android:layout_width="117dp"
+                android:layout_height="93dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:minWidth="50dp"
+                android:minHeight="50dp"
+                android:visibility="invisible" />
 
-
-    </LinearLayout>
-
+    </RelativeLayout>
 
 </ScrollView>
