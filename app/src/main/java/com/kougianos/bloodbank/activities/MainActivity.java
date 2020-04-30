@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.search_btn) {
                     startActivity(new Intent(MainActivity.this, SearchActivity.class));
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }
                 return false;
             }
