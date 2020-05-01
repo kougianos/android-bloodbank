@@ -2,19 +2,31 @@ package com.kougianos.bloodbank.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.kougianos.bloodbank.R;
+import com.kougianos.bloodbank.adapters.RequestAdapter;
+import com.kougianos.bloodbank.models.RequestDataModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private RecyclerView recyclerView;
+    private List<RequestDataModel> requestDataModels;
+    private RequestAdapter requestAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        requestDataModels = new ArrayList<>();
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -26,5 +38,24 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+        requestAdapter = new RequestAdapter(requestDataModels, this);
+        recyclerView.setAdapter(requestAdapter);
+        populateHomePage();
     }
+
+    private void populateHomePage() {
+        RequestDataModel requestDataModel = new RequestDataModel("hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello DONE", "https://businessrev.gr/wp-content/uploads/2018/08/gettyimages-631066318.jpg");
+        requestDataModels.add(requestDataModel);
+        requestDataModels.add(requestDataModel);
+        requestDataModels.add(requestDataModel);
+        requestDataModels.add(requestDataModel);
+        requestDataModels.add(requestDataModel);
+        requestAdapter.notifyDataSetChanged();
+    }
+
+
 }
