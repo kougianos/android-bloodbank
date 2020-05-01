@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/toolbar"
             android:layout_centerHorizontal="true"
-            android:background="#FAFAFA"
+            android:background="#DADADA"
             android:gravity="center">
 
         <TextView
@@ -36,7 +36,8 @@
                 android:text="Choose Location"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                android:drawablePadding="10dp"/>
 
     </LinearLayout>
 
@@ -58,6 +59,6 @@
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
 </RelativeLayout>
