@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.kougianos.bloodbank.R;
 import com.kougianos.bloodbank.adapters.RequestAdapter;
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<RequestDataModel> requestDataModels;
     private RequestAdapter requestAdapter;
+    private TextView makeRequestButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +42,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Create recycler view and populate it
         recyclerView = findViewById(R.id.recyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         requestAdapter = new RequestAdapter(requestDataModels, this);
         recyclerView.setAdapter(requestAdapter);
         populateHomePage();
+
+        // Make request button
+        makeRequestButton = findViewById(R.id.make_request_button);
+        makeRequestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MakeRequestActivity.class));
+            }
+        });
     }
 
     private void populateHomePage() {
