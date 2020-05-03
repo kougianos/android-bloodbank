@@ -3,7 +3,7 @@
     <string name="main_activity">Main Activity</string>
     <string name="register_message">Your details will be public to the community, and by using this app you also need to pledge to be a donor to help those who are in need</string>
     <string name="sign_up"><u>Sign up</u></string>
-    <string name="request_message">Write your message and an image for the community, and hopefully someone will reach out to help you.</string>
+    <string name="request_message">Write your message and upload an image for the community, and hopefully someone will reach out to help you.</string>
     <string name="choose_image"><u>Choose Image</u></string>
 
 </resources>
