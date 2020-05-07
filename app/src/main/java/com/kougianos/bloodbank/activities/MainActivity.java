@@ -60,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Create recycler view and populate it
         recyclerView = findViewById(R.id.recyclerView);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        RecyclerView.LayoutManager layoutManager =
+                new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         requestAdapter = new RequestAdapter(requestDataModels, this);
         recyclerView.setAdapter(requestAdapter);
@@ -77,13 +78,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void populateHomePage() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, Endpoints.requestsUrl,
+        final String city = PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
+                .getString("city", "noCity");
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Endpoints.requestsUrl,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Gson gson = new Gson();
                         // Create type of JSON to bind it to gson
-                        Type type = new TypeToken<List<RequestDataModel>>(){}.getType();
+                        Type type = new TypeToken<List<RequestDataModel>>() {
+                        }.getType();
                         List<RequestDataModel> dataModels = gson.fromJson(response, type);
                         requestDataModels.addAll(dataModels);
                         requestAdapter.notifyDataSetChanged();
@@ -100,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+                params.put("city", city);
                 return params;
             }
         };
