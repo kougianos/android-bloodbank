@@ -12,5 +12,6 @@ public class Endpoints {
     public static final String loginUrl = baseUrl + "login.php";
     public static final String uploadUrl = baseUrl + "upload_request.php";
     public static final String requestsUrl = baseUrl + "get_requests.php";
+    public static final String searchDonors = baseUrl + "search_donors.php";
 
 }
