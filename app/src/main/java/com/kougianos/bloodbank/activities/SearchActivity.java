@@ -2,6 +2,7 @@ package com.kougianos.bloodbank.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,17 +15,12 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.kougianos.bloodbank.R;
-import com.kougianos.bloodbank.models.RequestDataModel;
 import com.kougianos.bloodbank.utils.BloodGroup;
 import com.kougianos.bloodbank.utils.Endpoints;
 import com.kougianos.bloodbank.utils.VolleySingleton;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -57,7 +53,11 @@ public class SearchActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
 
-                        System.out.println(response);
+                        Intent intent = new Intent(SearchActivity.this, SearchResults.class);
+                        intent.putExtra("city", city);
+                        intent.putExtra("blood_group", bloodGroup);
+                        intent.putExtra("json", response);
+                        startActivity(intent);
 
                     }
                 }, new Response.ErrorListener() {
