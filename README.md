@@ -18,22 +18,27 @@ The application uses POST and GET requests on a PHP/MySQL server (hosted on 000w
 #### Glide(For loading images): https://github.com/bumptech/glide
 #### Fast Android Networking (For better Image Upload): https://github.com/amitshekhariitbhu/Fast-Android-Networking
 
-## Screenshots
-**Login Page** <br>
-![](https://i.imgur.com/Naf99ww.png) <br><br>
+## Screenshots  
 
-**Main Page** <br>
-![](https://i.imgur.com/9iXtPgQ.png) <br><br>
-
-**Register Page** <br>
-![](https://i.imgur.com/LlsuHNj.png) <br><br>
-
-**Search Page** <br>
-![](https://i.imgur.com/gJBeD9U.png) <br><br>
-
-**Search results Page** <br>
-![](https://i.imgur.com/lEUnKd4.png) <br><br>
-
-**Make Request Page** <br>
-![](https://i.imgur.com/Bd1vDHg.png) <br><br>
-
+<table>
+  <tr>
+     <td>Login Page</td>
+     <td>Main Page</td>
+     <td>Register Page</td>
+  </tr>
+   <tr>
+    <td><img src="https://i.imgur.com/Naf99ww.png" width=270></td>
+    <td><img src="https://i.imgur.com/9iXtPgQ.png" width=270></td>
+    <td><img src="https://i.imgur.com/LlsuHNj.png" width=270></td>
+  </tr>
+  <tr>
+     <td>Search Page</td>
+     <td>Search results Page</td>
+     <td>Make request Page</td>
+  </tr>
+  <tr>
+    <td><img src="https://i.imgur.com/gJBeD9U.png" width=270></td>
+    <td><img src="https://i.imgur.com/lEUnKd4.png" width=270></td>
+    <td><img src="https://i.imgur.com/Bd1vDHg.png" width=270></td>
+  </tr>
+</table>
