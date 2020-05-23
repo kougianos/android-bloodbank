@@ -55,7 +55,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
                         == PermissionChecker.PERMISSION_GRANTED) {
 
                     Intent intent = new Intent(Intent.ACTION_CALL);
-                    intent.setData(Uri.parse("tel" + dataSet.get(position).getNumber()));
+                    intent.setData(Uri.parse("tel:" + dataSet.get(position).getNumber()));
                     context.startActivity(intent);
 
                 } else {
@@ -67,7 +67,12 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
         holder.shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT,
+                        holder.message.getText().toString() + "\n\nContact: " + dataSet.get(position).getNumber());
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Hey, could you help here");
+                context.startActivity(Intent.createChooser(shareIntent, "Share!"));
             }
         });
 

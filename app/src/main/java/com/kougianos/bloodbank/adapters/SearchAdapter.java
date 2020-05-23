@@ -46,6 +46,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
 
         String str = "Name: " + dataSet.get(position).getName();
         str += "\nCity:" + dataSet.get(position).getCity();
+
+        holder.message.setText(str);
         holder.callButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,8 +56,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
                         == PermissionChecker.PERMISSION_GRANTED) {
 
                     Intent intent = new Intent(Intent.ACTION_CALL);
-                    intent.setData(Uri.parse("tel" + dataSet.get(position).getNumber()));
-                    context.startActivity(intent);
+                    intent.setData(Uri.parse("tel:" + dataSet.get(position).getNumber()));
+                    ((Activity) context).startActivity(intent);
 
                 } else {
                     ((Activity) context).requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, 401);
@@ -74,7 +76,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     }
 
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView message;
         ImageView imageView;

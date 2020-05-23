@@ -67,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(requestAdapter);
         populateHomePage();
 
+        TextView pickLocation = findViewById(R.id.pick_location);
+        String location = PreferenceManager.getDefaultSharedPreferences(this).getString("city", "no_city_found");
+
+        if (!location.equals("no_city_found")) {
+            pickLocation.setText(location);
+        }
+
         // Make request button
         makeRequestButton = findViewById(R.id.make_request_button);
         makeRequestButton.setOnClickListener(new View.OnClickListener() {

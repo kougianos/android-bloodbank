@@ -53,12 +53,12 @@ public class SearchResults extends AppCompatActivity {
         }
 
         // Create recycler view and populate it
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recycler_view);
         RecyclerView.LayoutManager layoutManager =
                 new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
-        SearchAdapter searchAdapter = new SearchAdapter(donorList, getApplicationContext());
+        SearchAdapter searchAdapter = new SearchAdapter(donorList, SearchResults.this);
         recyclerView.setAdapter(searchAdapter);
 
     }
