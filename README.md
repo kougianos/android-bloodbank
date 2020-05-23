@@ -3,7 +3,8 @@
 ## Summary
 Android application developed in Java, connected with a remote PHP/MySQL server.<br><br>
 In this application users can register/login using their mobile phone, and view requests near their location, created by other users who are in need of blood donation. <br>
-The user can also create their own post seeking for help, and upload it to the server, and search by donors by city.
+The user can also create their own post seeking for help, and upload it to the server, and search by donors by city.  
+The APK is available for download <a href="https://grizzledwizard.eu/kougianos/apk/androidBloodbank-debug.apk">here</a>
 
 ## Database and APIs
 The application uses POST and GET requests on a PHP/MySQL server (hosted on 000webhost) for the following functionalities: <br>
