@@ -7,7 +7,7 @@ The user can also create their own post seeking for help, and upload it to the s
 The APK is available for download <a href="https://grizzledwizard.eu/kougianos/apk/androidBloodbank-debug.apk">here</a>.
 
 ## Database and APIs
-The application uses POST and GET requests on a PHP/MySQL server (hosted on 000webhost) for the following functionalities: <br>
+The app uses POST and GET requests on a PHP/MySQL server (hosted on 000webhost) for the following functionalities: <br>
 * login  
 * register  
 * fetch all requests (on main activity)  
